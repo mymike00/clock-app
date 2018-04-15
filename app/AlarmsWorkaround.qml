@@ -28,42 +28,46 @@ Page {
         }
     }
 
-    Alarm{
-            id: alarm
-        }
-        Column {
-            spacing: units.gu(1)
-            Row {
-                spacing: units.gu(1)
-                Label {
-                    id: date
-                    text: "Date:"
-                    anchors.verticalCenter: parent.verticalCenter
-                }
-                TextField {
-                    text: alarm.date.toString()
-                    onAccepted: alarm.date = new Date(text)
-                }
-            }
-            Row {
-                spacing: units.gu(1)
-                Label {
-                    id: msg
-                    text: "Message:"
-                    anchors.verticalCenter: parent.verticalCenter
-                }
-                TextField {
-                    text: alarm.message
-                    onAccepted: alarm.message = text
-                }
-            }
-            Button {
-                text: "Save"
-                onClicked: {
-                    alarm.save();
-                    if (alarm.error != Alarm.NoError)
-                        print("Error saving alarm, code: " + alarm.error);
-                }
-            }
-        }
+//    Rectangle {
+//        width: units.gu(40)
+//        height: units.gu(20)
+//        Alarm{
+//            id: alarm
+//        }
+//        Column {
+//            spacing: units.gu(1)
+//            Row {
+//                spacing: units.gu(1)
+//                Label {
+//                    id: date
+//                    text: "Date:"
+//                    anchors.verticalCenter: parent.verticalCenter
+//                }
+//                TextField {
+//                    text: alarm.date.toString()
+//                    onAccepted: alarm.date = new Date(text)
+//                }
+//            }
+//            Row {
+//                spacing: units.gu(1)
+//                Label {
+//                    id: msg
+//                    text: "Message:"
+//                    anchors.verticalCenter: parent.verticalCenter
+//                }
+//                TextField {
+//                    text: alarm.message
+//                    onAccepted: alarm.message = text
+//                }
+//            }
+//            Button {
+//                text: "Save"
+//                onClicked: {
+//                    alarm.save();
+//                    if (alarm.error != Alarm.NoError)
+//                        print("Error saving alarm, code: " + alarm.error);
+//                }
+//            }
+//        }
+//    }
 }
