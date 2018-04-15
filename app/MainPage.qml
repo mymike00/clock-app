@@ -22,7 +22,7 @@ import QtSystemInfo 5.0
 import Qt.labs.settings 1.0
 
 import "upstreamcomponents"
-import "alarm"
+// import "alarm"
 import "clock"
 import "stopwatch"
 import "components"
@@ -47,7 +47,7 @@ Page {
     property bool isClockPage: listview.currentIndex === 0
 
     // Clock App Alarm Model Reference Variable
-    property var alarmModel
+    // property var alarmModel
 
     Timer {
         id: hideBottomEdgeHintTimer
@@ -55,25 +55,25 @@ Page {
         onTriggered: bottomEdgeLoader.item.hint.status = BottomEdgeHint.Inactive
     }
 
-    Loader {
-        id: bottomEdgeLoader
-        asynchronous: true
-        onLoaded: {
-            item.alarmModel = Qt.binding( function () { return  _mainPage.alarmModel } );
-            item.hint.visible = Qt.binding( function () { return _mainPage.isClockPage } );
-            hideBottomEdgeHintTimer.start();
-        }
-        Component.onCompleted: setSource("components/AlarmBottomEdge.qml", {
-                                             "objectName": "bottomEdge",
-                                             "parent": _mainPage,
-                                             "pageStack": mainStack,
-                                             "hint.objectName": "bottomEdgeHint"
-                                         });
-    }
+//    Loader {
+//        id: bottomEdgeLoader
+//        asynchronous: true
+//        onLoaded: {
+//            item.alarmModel = Qt.binding( function () { return  _mainPage.alarmModel } );
+//            item.hint.visible = Qt.binding( function () { return _mainPage.isClockPage } );
+//            hideBottomEdgeHintTimer.start();
+//        }
+//        Component.onCompleted: setSource("components/AlarmBottomEdge.qml", {
+//                                             "objectName": "bottomEdge",
+//                                             "parent": _mainPage,
+//                                             "pageStack": mainStack,
+//                                             "hint.objectName": "bottomEdgeHint"
+//                                         });
+//    }
 
-    AlarmUtils {
-        id: alarmUtils
-    }
+//    AlarmUtils {
+//        id: alarmUtils
+//    }
 
     ScreenSaver {
         // Disable screen dimming/off when stopwatch is running
@@ -96,9 +96,9 @@ Page {
                                                                      "localizedClockDateString": _mainPage.localizedDateString,
                                                                      "width": clockApp.width,
                                                                      "height": listview.height});
-                timerPageLoader.setSource("timer/TimerPage.qml" ,{
-                                                                 "width": clockApp.width,
-                                                                 "height": listview.height });
+//                timerPageLoader.setSource("timer/TimerPage.qml" ,{
+//                                                                 "width": clockApp.width,
+//                                                                 "height": listview.height });
             }
 
         }
@@ -115,19 +115,19 @@ Page {
             }
         }
 
-        Loader {
-            id:timerPageLoader
-            asynchronous: true
-            active: alarmModel !== null || timerPageLoader.item;
-            width: clockApp.width
-            height: listview.height
-            onLoaded: {
-                item.alarmModel = Qt.binding( function () { return  _mainPage.alarmModel } )
-                if (this.item.isRunning) {
-                    listview.moveToTimerPage()
-                }
-            }
-        }
+//        Loader {
+//            id:timerPageLoader
+//            asynchronous: true
+//            active: alarmModel !== null || timerPageLoader.item;
+//            width: clockApp.width
+//            height: listview.height
+//            onLoaded: {
+//                item.alarmModel = Qt.binding( function () { return  _mainPage.alarmModel } )
+//                if (this.item.isRunning) {
+//                    listview.moveToTimerPage()
+//                }
+//            }
+//        }
     }
 
     header: PageHeader {
@@ -139,14 +139,14 @@ Page {
 
         trailingActionBar {
             actions : [
-                Action {
-                    id: settingsIcon
-                    objectName: "settingsIcon"
-                    iconName: "settings"
-                    onTriggered: {
-                        mainStack.push(Qt.resolvedUrl("./alarm/AlarmSettingsPage.qml"))
-                    }
-                },
+//                Action {
+//                    id: settingsIcon
+//                    objectName: "settingsIcon"
+//                    iconName: "settings"
+//                    onTriggered: {
+//                        mainStack.push(Qt.resolvedUrl("./alarm/AlarmSettingsPage.qml"))
+//                    }
+//                },
                 Action {
                     id: infoIcon
                     objectName: "infoIcon"
@@ -171,10 +171,10 @@ Page {
             listview.currentIndex = 1
         }
 
-        function moveToTimerPage() {
-            moveAnimation.moveTo(listview.originX + listview.width*2)
-            listview.currentIndex = 2
-        }
+//        function moveToTimerPage() {
+//            moveAnimation.moveTo(listview.originX + listview.width*2)
+//            listview.currentIndex = 2
+//        }
 
         function moveToClockPage() {
             moveAnimation.moveTo(listview.originX)
