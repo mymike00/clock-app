@@ -272,7 +272,7 @@ Page {
         currentIndex: -1
 
         function addWorldCity(cityId, countryName, timezone) {
-            console.log("[LOG]: Adding " + cityId.toString() + " city to U1db Database")
+            console.log("[LOG]: Adding " + cityId.toString() + " city to Settings")
             clockDB.putDoc
                     (
                         {

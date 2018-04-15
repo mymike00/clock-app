@@ -17,7 +17,7 @@
  */
 
 import QtQuick 2.4
-import U1db 1.0 as U1db
+// import U1db 1.0 as U1db
 import QtPositioning 5.2
 import Ubuntu.Components 1.3
 import WorldClock 1.0
@@ -94,12 +94,8 @@ Item {
 
                 // If this is the first time, then set location as Denied
                 // to indicate user denying clock app location access.
-                if (userLocationDocument.contents.location === "Null") {
-                    var locationData = JSON.parse
-                            (JSON.stringify(userLocationDocument.contents))
-
-                    locationData.location = "Denied"
-                    userLocationDocument.contents = locationData
+                if (clockAppSettings.location === "Null") {
+                    clockAppSettings.location = "Denied"
                 }
             }
         }
@@ -114,8 +110,8 @@ Item {
              Stop querying for the user location if it is found to be
              the same as the one stored in the app setting database
             */
-            if (userLongitude === userLocationDocument.contents.long ||
-                    userLatitude === userLocationDocument.contents.lat) {
+            if (userLongitude === clockAppSettings.longitude ||
+                    userLatitude === clockAppSettings.latitude) {
                 if (geoposition.active) {
                     console.log("[LOG]: Stopping geolocation update service")
                     geoposition.stop()
@@ -169,14 +165,9 @@ Item {
         }
 
         onLocationChanged: {
-            var locationData = JSON.parse
-                    (JSON.stringify(userLocationDocument.contents))
-
-            locationData.lat = geoposition.userLatitude
-            locationData.long = geoposition.userLongitude
-            locationData.location = userLocation.location
-
-            userLocationDocument.contents = locationData
+            clockAppSettings.latitude = geoposition.userLatitude
+            clockAppSettings.longitude = geoposition.userLongitude
+            clockAppSettings.location = userLocation.location
 
             /*
              Stop querying the user coordinates once the user location has been
@@ -253,14 +244,14 @@ Item {
             anchors.verticalCenter: locationIcon.verticalCenter
 
             text: {
-                if (userLocationDocument.contents.location === "Null"
-                        || userLocationDocument.contents.location === "Denied"
+                if (clockAppSettings.location === "Null"
+                        || clockAppSettings.location === "Denied"
                         && geoposition.sourceError === PositionSource.NoError) {
                     return i18n.tr("Retrieving location...")
                 }
 
                 else {
-                    return userLocationDocument.contents.location
+                    return clockAppSettings.location
                 }
             }
         }

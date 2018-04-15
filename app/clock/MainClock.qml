@@ -32,7 +32,7 @@ Clock {
 
     isMainClock: true
 
-    isDigital: clockModeDocument.contents.digitalMode ? true : false
+    isDigital: clockAppSettings.mode
     height: width
 
     Component.onCompleted: {

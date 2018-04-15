@@ -19,6 +19,7 @@
 import QtQuick 2.4
 import WorldClock 1.0
 import U1db 1.0 as U1db
+import QtQuick.LocalStorage 2.0
 //import Alarm 1.0
 import Ubuntu.Components 1.3
 import QtQuick.Window 2.2
@@ -30,6 +31,7 @@ Window {
 
     // Property to store the state of an application (active or suspended)
     property bool applicationState: Qt.application.active
+    property var clockDBnew: LocalStorage.openDatabaseSync("clockDB", "1", "Clock Database", 0)
 
     /*
       The width and height defined below are the same dimension used by the
@@ -73,6 +75,11 @@ Window {
         Settings {
             id:clockAppSettings
             property string theme: ""
+            property bool mode: false     // false=AnalogMode, true=DigitalMode
+            property string latitude: "NaN"
+            property string longitude: "NaN"
+            property string location: "Null"
+
 
             function updateTheme() {
                 if( typeof(clockAppSettings.theme) == 'string') {
@@ -91,21 +98,21 @@ Window {
         }
 
         // Document to store clock mode chosen by user
-        U1db.Document {
-            id: clockModeDocument
-            create: true
-            database: clockDB
-            docId: "clockModeDocument"
-            defaults: { "digitalMode": false }
-        }
+//        U1db.Document {
+//            id: clockModeDocument
+//            create: true
+//            database: clockDB
+//            docId: "clockModeDocument"
+//            defaults: { "digitalMode": false }
+//        }
 
-        U1db.Document {
-            id: userLocationDocument
-            create: true
-            database: clockDB
-            docId: "userLocationDocument"
-            defaults: { "lat": "NaN", "long": "Nan", "location": "Null" }
-        }
+//        U1db.Document {
+//            id: userLocationDocument
+//            create: true
+//            database: clockDB
+//            docId: "userLocationDocument"
+//            defaults: { "lat": "NaN", "long": "Nan", "location": "Null" }
+//        }
 
         DateTime {
             id: localTimeSource
