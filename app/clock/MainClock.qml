@@ -100,17 +100,17 @@ Clock {
     */
     Connections {
         target: digitalModeLoader.item
-        onAnimationComplete: {
-            alarmModelLoader.source = Qt.resolvedUrl("../alarm/AlarmModelComponent.qml")
-            isColdStart = false
-        }
+//        onAnimationComplete: {
+//            alarmModelLoader.source = Qt.resolvedUrl("../alarm/AlarmModelComponent.qml")
+//            isColdStart = false
+//        }
     }
 
     Connections {
         target: analogModeLoader.item
-        onAnimationComplete: {
-            alarmModelLoader.source = Qt.resolvedUrl("../alarm/AlarmModelComponent.qml")
-            isColdStart = false
-        }
+//        onAnimationComplete: {
+//            alarmModelLoader.source = Qt.resolvedUrl("../alarm/AlarmModelComponent.qml")
+//            isColdStart = false
+//        }
     }
 }

@@ -17,7 +17,7 @@
  */
 
 #include <QDebug>
-#include <QtDBus>
+#include <QtDBus/QtDBus>
 
 #include "settings.h"
 

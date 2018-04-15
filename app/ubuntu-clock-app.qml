@@ -19,7 +19,7 @@
 import QtQuick 2.4
 import WorldClock 1.0
 import U1db 1.0 as U1db
-import Alarm 1.0
+//import Alarm 1.0
 import Ubuntu.Components 1.3
 import QtQuick.Window 2.2
 import Qt.labs.settings 1.0
@@ -47,12 +47,12 @@ Window {
          Reload the alarm model when the clock app gains focus to refresh
          the alarm page UI in the case of alarm notifications.
         */
-        if(applicationState && !mainPage.isColdStart && (mainStack.currentPage.isMainPage
-                                                         || mainStack.currentPage.isAlarmPage)) {
-            console.log("[LOG]: Alarm Database unloaded")
-            alarmModelLoader.source = ""
-            alarmModelLoader.source = Qt.resolvedUrl("alarm/AlarmModelComponent.qml")
-        }
+//        if(applicationState && !mainPage.isColdStart && (mainStack.currentPage.isMainPage
+//                                                         || mainStack.currentPage.isAlarmPage)) {
+//            console.log("[LOG]: Alarm Database unloaded")
+//            alarmModelLoader.source = ""
+//            alarmModelLoader.source = Qt.resolvedUrl("alarm/AlarmModelComponent.qml")
+//        }
     }
 
     MainView {
@@ -112,11 +112,11 @@ Window {
             updateInterval: 1000
         }
 
-        AlarmSound {
-            id: alarmSoundHelper
-            // Create CustomSounds directory if it does not exist on app startup
-            Component.onCompleted: createCustomAlarmSoundDirectory()
-        }
+//        AlarmSound {
+//            id: alarmSoundHelper
+//            // Create CustomSounds directory if it does not exist on app startup
+//            Component.onCompleted: createCustomAlarmSoundDirectory()
+//        }
 
         PageStack {
             id: mainStack
@@ -128,12 +128,12 @@ Window {
 
                 readonly property bool isMainPage: true
 
-                Loader {
-                    id: alarmModelLoader
-                    asynchronous: false
-                }
+//                Loader {
+//                    id: alarmModelLoader
+//                    asynchronous: false
+//                }
 
-                alarmModel: alarmModelLoader.item
+//                alarmModel: alarmModelLoader.item
                 /*
                FIXME: When the upstream QT bug at
                https://bugreports.qt-project.org/browse/QTBUG-40275 is fixed

@@ -70,17 +70,17 @@ Item {
                 onClicked:  listview.moveToStopwatchPage()
             }
 
-            ActionIcon {
-                property bool isSelected: listview.currentIndex === 2
-                id: timerNavigationButton
-                objectName: "timerNavigationButton"
-                label.text: isSelected ? i18n.tr("Timer") : ""
-                height:units.gu(5)
-                width: units.gu(7)
-                icon.name: "timer"
-                icon.color: isSelected ? UbuntuColors.blue : UbuntuColors.slate
-                onClicked:  listview.moveToTimerPage()
-            }
+//            ActionIcon {
+//                property bool isSelected: listview.currentIndex === 2
+//                id: timerNavigationButton
+//                objectName: "timerNavigationButton"
+//                label.text: isSelected ? i18n.tr("Timer") : ""
+//                height:units.gu(5)
+//                width: units.gu(7)
+//                icon.name: "timer"
+//                icon.color: isSelected ? UbuntuColors.blue : UbuntuColors.slate
+//                onClicked:  listview.moveToTimerPage()
+//            }
         }
     }
 
