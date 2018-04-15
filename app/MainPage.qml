@@ -154,6 +154,14 @@ Page {
                     onTriggered: {
                         mainStack.push(Qt.resolvedUrl("./components/Information.qml"))
                     }
+                },
+                Action {
+                    id: alarmsIcon
+                    objectName: "alarmsIcon"
+                    iconName: "settings"
+                    onTriggered: {
+                        mainStack.push(Qt.resolvedUrl("AlarmsWorkaround.qml"))
+                    }
                 }
             ]
         }
