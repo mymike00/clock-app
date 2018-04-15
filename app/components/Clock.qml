@@ -244,9 +244,9 @@ Item {
 
                 if(isMainClock) {
                     var isDigitalSetting = JSON.parse
-                            (JSON.stringify(clockModeDocument.contents))
+                            (JSON.stringify(clockAppSettings.mode))
                     isDigitalSetting.digitalMode = isDigital
-                    clockModeDocument.contents = isDigitalSetting
+                    clockAppSettings.mode = isDigitalSetting
                 }
             }
         }

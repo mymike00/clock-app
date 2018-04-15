@@ -93,8 +93,8 @@ ListItem {
             }
 
             Component.onCompleted: {
-                isDigital = clockModeDocument.contents.digitalMode ? true : false
-                if (clockModeDocument.contents.digitalMode) {
+                isDigital = clockAppSettings.mode
+                if (isDigital) {
                     digitalModeLoader.setSource
                             ("../components/DigitalMode.qml",
                              {
